@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
  * Created by zbl on 2017/6/19.
  */
 @Configuration
-//@ConditionalOnBean(RestTemplateBuilder.class)
 public class RestTemplateConfig {
     @Autowired(required = false)
     private RestTemplateBuilder builder;
