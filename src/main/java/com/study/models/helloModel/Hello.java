@@ -9,13 +9,13 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Hello extends BaseModel {
-    private String aaa;
+    private String world;
 
-    public String getAaa() {
-        return aaa;
+    public String getWorld() {
+        return world;
     }
 
-    public void setAaa(String aaa) {
-        this.aaa = aaa;
+    public void setWorld(String world) {
+        this.world = world;
     }
 }
