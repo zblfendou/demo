@@ -12,7 +12,9 @@ import javax.sql.DataSource;
 
 import static java.util.stream.Collectors.toList;
 import static org.springframework.util.StringUtils.commaDelimitedListToSet;
-
+/**
+ * Created by zbl on 2017/6/19.
+ */
 public class DataInitializerConfig {
     @Value("${spring.ext.datainitial.sources:}")
     private String dataInitialSources;

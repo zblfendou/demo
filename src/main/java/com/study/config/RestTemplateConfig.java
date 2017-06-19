@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by ZhaoBaogang on 2017/2/6.
+ * Created by zbl on 2017/6/19.
  */
 @Configuration
 //@ConditionalOnBean(RestTemplateBuilder.class)
