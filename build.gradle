@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.4.RELEASE'
+        springBootVersion = '1.5.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -23,11 +23,29 @@ repositories {
 
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-web')
+    //数据库连接驱动
     runtime('mysql:mysql-connector-java')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    //spring-boot
+    compile('org.springframework.boot:spring-boot:1.5.2.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa:1.5.2.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE')
+    //持久化框架
     compile('com.alibaba:druid:1.0.31')
     compile('javax.inject:javax.inject:1')
+    //dubbo
+    compile('com.alibaba:dubbo:2.5.3')
+            {
+                exclude group: 'org.springframework', module: 'spring'
+                exclude group: 'org.javassist'
+            }
+    compile('commons-io:commons-io:2.4')
+    //zookeeper支持
+    compile('org.apache.zookeeper:zookeeper:3.4.6')
+    compile('com.101tec:zkclient:0.8')
+    //hibernate-jpa支持
+    compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+    //spring-boot测试
+    testCompile('org.springframework.boot:spring-boot-starter-test:1.5.2.RELEASE')
+    testCompile('org.springframework.boot:spring-boot-test:1.5.2.RELEASE')
 
 }

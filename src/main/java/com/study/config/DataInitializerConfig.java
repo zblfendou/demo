@@ -26,9 +26,9 @@ public class DataInitializerConfig {
         DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
 
         dataSourceInitializer.setDataSource(dataSource);
-        Resource[] sources = commaDelimitedListToSet(dataInitialSources).stream().map(String::trim).map(ClassPathResource::new).collect(toList()).toArray(new Resource[0]);
+       /* Resource[] sources = commaDelimitedListToSet(dataInitialSources).stream().map(String::trim).map(ClassPathResource::new).collect(toList()).toArray(new Resource[0]);
         dataSourceInitializer.setDatabasePopulator(new ResourceDatabasePopulator(true, true, "UTF-8"
-                , sources));
+                , sources));*/
         return dataSourceInitializer;
     }
 
