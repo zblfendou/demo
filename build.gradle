@@ -28,9 +28,12 @@ dependencies {
     //数据库连接驱动
     runtime('mysql:mysql-connector-java')
     //spring-boot
-    compile('org.springframework.boot:spring-boot:'+springBootVersion)
-    compile('org.springframework.boot:spring-boot-starter-data-jpa:'+springBootVersion)
-    compile('org.springframework.boot:spring-boot-starter-web:'+springBootVersion)
+    compile('org.springframework.boot:spring-boot:' + springBootVersion)
+    compile('org.springframework.boot:spring-boot-starter-data-jpa:' + springBootVersion)
+    compile('org.springframework.boot:spring-boot-starter-web:' + springBootVersion)
+
+    compile('org.springframework:spring-context-support:4.3.8.RELEASE')
+
     //持久化框架
     compile('com.alibaba:druid:1.0.31')
     compile('javax.inject:javax.inject:1')
@@ -46,28 +49,54 @@ dependencies {
     compile('com.101tec:zkclient:0.8')
     //hibernate-jpa支持
     compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')
+    //quartz 定时任务
+    compile('org.quartz-scheduler:quartz:2.2.3')
     //spring-boot测试
-    testCompile('org.springframework.boot:spring-boot-starter-test:'+springBootVersion)
-    testCompile('org.springframework.boot:spring-boot-test:'+springBootVersion)
+    testCompile('org.springframework.boot:spring-boot-starter-test:' + springBootVersion)
+    testCompile('org.springframework.boot:spring-boot-test:' + springBootVersion)
 
+
+    //排除log4j与log4j12中方法冲突
+    configurations.all {
+        resolutionStrategy {
+
+            final $slf4j_version = '1.7.22'
+
+            eachDependency {
+                details ->
+                    if (details.requested.group == 'org.mockito' && details.requested.name == 'mockito-all')
+                        details.useTarget(name: 'mockito-core', group: details.requested.group, version: details.requested.version)
+                    else if (details.requested.group == 'commons-logging')
+                        details.useTarget 'org.slf4j:jcl-over-slf4j:' + $slf4j_version
+                    else if (details.requested.group == 'log4j')
+                        details.useTarget 'org.slf4j:log4j-over-slf4j:' + $slf4j_version
+                    else if (details.requested.group == 'org.jboss.netty' && details.requested.name == 'netty')
+                        details.useTarget 'io.netty:netty:3.10.4.Final'
+                    else if (details.requested.name == 'slf4j-log4j12')
+                        details.useTarget 'ch.qos.logback:logback-classic:1.1.9'
+                    else if (details.requested.group == 'org.slf4j')
+                        details.useVersion $slf4j_version
+            }
+        }
+    }
 
     //项目打包JAR--参考http://blog.csdn.net/asd1098626303/article/details/60868123 感谢
     jar {
         String desc = 'pack package'
-        configurations.runtime.each {desc=desc+"lib\\"+it.name}
-        manifest{
-            attributes 'Main-Class':'com.study.SpringbootApplication'
-            attributes 'Class-Path':desc
+        configurations.runtime.each { desc = desc + "lib\\" + it.name }
+        manifest {
+            attributes 'Main-Class': 'com.study.SpringbootApplication'
+            attributes 'Class-Path': desc
         }
     }
 
-    task copyJar(type:Copy){
+    task copyJar(type: Copy) {
         from configurations.runtime
-        into ('build/libs/lib')
+        into('build/libs/lib')
 
     }
 
-    task release(type: Copy,dependsOn: [build,copyJar]) {
+    task release(type: Copy, dependsOn: [build, copyJar]) {
     }
 
 
