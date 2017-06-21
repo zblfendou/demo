@@ -17,6 +17,7 @@ import java.util.Properties;
 
 /**
  * Created by zbl on 2017/6/21.
+ * 重新定义scheduler bean名称
  */
 @Configuration
 public class ScheduleConfig {

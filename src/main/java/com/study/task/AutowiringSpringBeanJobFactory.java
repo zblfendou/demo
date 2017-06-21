@@ -11,7 +11,7 @@ import javax.inject.Named;
 
 /**
  * Created by zbl on 2017/6/21.
- * 重新定义scheduler bean名称,放入beanFactory中
+ * 将jobFactory放入spring的bean factory中
  */
 @Named
 public final class AutowiringSpringBeanJobFactory extends SpringBeanJobFactory implements ApplicationContextAware {
