@@ -21,14 +21,10 @@ import java.util.Properties;
  */
 @Configuration
 public class ScheduleConfig {
-    private static final Logger logger = LoggerFactory.getLogger(ScheduleConfig.class);
-    public static final String NEW_SCHEDULER = "new-scheduler";
-    public static final String OLD_SCHEDULER = "common-scheduler";
+    public static final String NEW_SCHEDULER = "commons-scheduler";
     @Inject
     private DataSource dataSource;
 
-    //    @Inject
-//    private PlatformTransactionManager txManager;
     @Inject
     private JobFactory jobFactory;
 
@@ -38,16 +34,10 @@ public class ScheduleConfig {
         return schedulerFactory(NEW_SCHEDULER);
     }
 
-    @Bean(OLD_SCHEDULER)
-    public SchedulerFactoryBean oldScheduler() throws IOException {
-        return schedulerFactory(OLD_SCHEDULER);
-    }
-
     private SchedulerFactoryBean schedulerFactory(String beanName) throws IOException {
         SchedulerFactoryBean factoryBean = new SchedulerFactoryBean();
         factoryBean.setBeanName(beanName);
         factoryBean.setDataSource(dataSource);
-//        factoryBean.setTransactionManager(txManager);
         factoryBean.setJobFactory(jobFactory);
 
         factoryBean.setOverwriteExistingJobs(true);

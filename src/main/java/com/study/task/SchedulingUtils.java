@@ -27,7 +27,7 @@ public class SchedulingUtils {
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Inject
-    @Named("new-scheduler")
+    @Named("commons-scheduler")
     private Scheduler scheduler;
 
     public void cancelTimedTaskSchedule(TimedTask job) {
