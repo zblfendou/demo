@@ -15,6 +15,7 @@ import static org.springframework.util.StringUtils.commaDelimitedListToSet;
 /**
  * Created by zbl on 2017/6/19.
  */
+@SuppressWarnings("SpringJavaAutowiringInspection")
 public class DataInitializerConfig {
     @Value("${spring.ext.datainitial.sources:}")
     private String dataInitialSources;

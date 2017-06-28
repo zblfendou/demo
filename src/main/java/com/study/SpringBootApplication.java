@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration(exclude = {
 		JmxAutoConfiguration.class,
 		JdbcTemplateAutoConfiguration.class,
-//		ThymeleafAutoConfiguration.class,
 		PersistenceExceptionTranslationAutoConfiguration.class})
 @ImportResource({"classpath*:*-dubbo.xml"})
 @ComponentScan("com.study")
