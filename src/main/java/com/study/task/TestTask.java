@@ -2,7 +2,6 @@ package com.study.task;
 
 import com.study.models.user.User;
 import com.study.services.user.UserService;
-import com.study.task.TimedTask;
 import org.springframework.context.ApplicationContext;
 
 /**
@@ -27,7 +26,7 @@ public class TestTask extends TimedTask {
         User user = new User();
         user.setName("test task user");
         user.setPassword("test task password");
-        service.add(user);
+        service.save(user);
         System.out.println("do testTask over!!!");
     }
 }

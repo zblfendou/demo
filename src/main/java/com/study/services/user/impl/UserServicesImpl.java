@@ -16,7 +16,12 @@ public class UserServicesImpl implements UserService {
     private UserRepository userDao;
 
     @Override
-    public void add(User user) {
+    public void save(User user) {
         userDao.save(user);
+    }
+
+    @Override
+    public User findOneByName(String name) {
+        return userDao.findOneByName(name);
     }
 }
