@@ -20,8 +20,6 @@ public class TaskTest extends AbstractSpringTestRunner {
         instance.set(Calendar.SECOND, 2);
         testTask.setStartTime(instance.getTime());
         schedulingUtils.addTimedTaskSchedule(testTask);
-
-
-        TimeUnit.SECONDS.sleep(5);
+//        TimeUnit.SECONDS.sleep(5);
     }
 }
