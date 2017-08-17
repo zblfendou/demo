@@ -14,13 +14,13 @@ public class UserServiceTest extends AbstractSpringTestRunner{
     @Inject
     private UserService userService;
 
-    @Test
+    /*@Test
     public void add() {
         User user = new User();
         user.setName("test");
         user.setPassword("password");
         userService.save(user);
         outputJson(user);
-    }
+    }*/
 
 }
