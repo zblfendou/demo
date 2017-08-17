@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class TaskTest extends AbstractSpringTestRunner {
     @Inject
     private SchedulingUtils schedulingUtils;
-  /*  @Test
+    @Test
     public void add() throws InterruptedException {
         TestTask testTask = new TestTask();
         Calendar instance = Calendar.getInstance();
@@ -21,5 +21,5 @@ public class TaskTest extends AbstractSpringTestRunner {
         testTask.setStartTime(instance.getTime());
         schedulingUtils.addTimedTaskSchedule(testTask);
 //        TimeUnit.SECONDS.sleep(5);
-    }*/
+    }
 }
