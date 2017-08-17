@@ -15,11 +15,12 @@ public class TaskTest extends AbstractSpringTestRunner {
     private SchedulingUtils schedulingUtils;
     @Test
     public void add() throws InterruptedException {
-        TestTask testTask = new TestTask();
-        Calendar instance = Calendar.getInstance();
-        instance.set(Calendar.SECOND, 2);
-        testTask.setStartTime(instance.getTime());
-        schedulingUtils.addTimedTaskSchedule(testTask);
+        System.out.println("test");
+//        TestTask testTask = new TestTask();
+//        Calendar instance = Calendar.getInstance();
+//        instance.set(Calendar.SECOND, 2);
+//        testTask.setStartTime(instance.getTime());
+//        schedulingUtils.addTimedTaskSchedule(testTask);
 //        TimeUnit.SECONDS.sleep(5);
     }
 }
