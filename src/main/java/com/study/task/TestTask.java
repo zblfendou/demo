@@ -27,6 +27,6 @@ public class TestTask extends TimedTask {
         user.setName("test task user");
         user.setPassword("test task password");
         service.save(user);
-        System.out.println("do testTask over!!!");
+        logger.debug("do testTask over!!!");
     }
 }
