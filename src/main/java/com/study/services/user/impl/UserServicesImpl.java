@@ -1,8 +1,10 @@
 package com.study.services.user.impl;
 
+import com.study.aspect.EventCutPoint;
 import com.study.models.user.User;
 import com.study.repositories.UserRepository;
 import com.study.services.user.UserService;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,12 +18,10 @@ public class UserServicesImpl implements UserService {
     private UserRepository userDao;
 
     @Override
-    public void save(User user) {
-        userDao.save(user);
+    @Transactional
+    @EventCutPoint
+    public User save(User user) {
+        return userDao.save(user);
     }
 
-    @Override
-    public User findOneByName(String name) {
-        return userDao.findOneByName(name);
-    }
 }
